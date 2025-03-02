@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+
 function App() {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
@@ -23,34 +24,38 @@ function App() {
 
   return (
     <div className="App">
-      <h1>BMI Calculator</h1>
-      <div>
-        <label>
-          Height (cm):
-          <input
-            type="number"
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          Weight (kg):
-          <input
-            type="number"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-          />
-        </label>
-      </div>
-      <button onClick={calculateBmi}>Calculate</button>
-      {bmi && (
-        <div>
-          <h2>Your BMI is {bmi}</h2>
-          <p>{message}</p>
+      <div className="calculator">
+        <h1>BMI Calculator</h1>
+        <div className="input-group">
+          <label>
+            Height (cm):
+            <input
+              type="number"
+              value={height}
+              onChange={(e) => setHeight(e.target.value)}
+              placeholder="Enter height"
+            />
+          </label>
         </div>
-      )}
+        <div className="input-group">
+          <label>
+            Weight (kg):
+            <input
+              type="number"
+              value={weight}
+              onChange={(e) => setWeight(e.target.value)}
+              placeholder="Enter weight"
+            />
+          </label>
+        </div>
+        <button onClick={calculateBmi}>Calculate</button>
+        {bmi && (
+          <div className="result">
+            <h2>Your BMI is {bmi}</h2>
+            <p>{message}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
